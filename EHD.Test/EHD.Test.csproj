@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{928B383E-5B8B-487B-83BC-E2CC81304CBC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EHD.Test</RootNamespace>
+    <AssemblyName>EHD.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0">
+      <HintPath>..\..\..\..\Users\xie\Downloads\NHibernate.Profiler-Build-951\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HolidayCalculatorTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HolidayCalculator\HolidayCalculator.csproj">
+      <Project>{F73ABF6C-99B4-40FF-8868-C448D3B7FF33}</Project>
+      <Name>HolidayCalculator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Admin\EHD.Admin.csproj">
+      <Project>{D1BF5E3E-A19A-4ECB-8D47-9AC349821C6E}</Project>
+      <Name>EHD.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Audit\EHD.Audit.csproj">
+      <Project>{116AF910-EFB2-443B-BC72-FA74C4366A14}</Project>
+      <Name>EHD.Audit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Constant\EHD.Constant.csproj">
+      <Project>{895D2D70-F1BB-45DA-B3DD-1BCF95C0DB1A}</Project>
+      <Name>EHD.Constant</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Login\EHD.Login.csproj">
+      <Project>{630B6A14-1FD3-4EC8-ACEB-60A0E41827BD}</Project>
+      <Name>EHD.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Model\EHD.Model.csproj">
+      <Project>{D6E36308-DFE2-4D98-BEA9-31E67B922068}</Project>
+      <Name>EHD.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Repository\EHD.Repository.csproj">
+      <Project>{647A694D-6584-46D2-AB1C-7E83E2A90CA4}</Project>
+      <Name>EHD.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

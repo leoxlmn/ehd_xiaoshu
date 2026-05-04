@@ -1,0 +1,114 @@
+﻿using System;
+namespace EHD.Model.Entity {
+    [Serializable]
+    public abstract class EntityBase : IComparable {
+
+        private int? oldHashCode;
+
+        public override int GetHashCode() {
+            if(oldHashCode.HasValue) return oldHashCode.Value;
+
+            if(Id == 0) {
+                oldHashCode = base.GetHashCode();
+                return oldHashCode.Value;
+            }
+
+            return Id.GetHashCode();
+        }
+
+        /// <summary>
+        /// Primary Key Field
+        /// </summary>
+        public virtual int Id { get; private set; }
+
+        public override bool Equals(object obj) {
+            var that = obj as EntityBase;
+            if(that == null) return false;
+
+            if(Id == 0 && that.Id == 0) {
+                return ReferenceEquals(this, that);
+            }
+
+            return Id == that.Id;
+        }
+
+        public static bool operator ==(EntityBase lhs, EntityBase rhs) {
+            return Equals(lhs, rhs);
+        }
+
+        public static bool operator !=(EntityBase lhs, EntityBase rhs) {
+            return !Equals(lhs, rhs);
+        }
+
+        /// <summary>
+        /// Concurrency control by version
+        /// </summary>
+        public virtual int Version { get; set; }
+
+        public virtual DateTime CreatedTime { get; set; }
+        public virtual DateTime? UpdatedTime { get; set; }
+        public virtual string CreatedBy { get; set; }
+        public virtual string UpdatedBy { get; set; }
+        public virtual bool IsTestData { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public EntityBase() {
+            IsTestData = false;
+        }
+
+        /// <summary>
+        /// This property is created for displaying in dropdownlist
+        /// </summary>
+        public virtual string DisplayName {
+            get {
+                return this.ToString();
+            }
+        }
+
+
+        public virtual int CompareTo(object obj) {
+            if(obj == null) return 0;
+
+            return DisplayName.CompareTo((obj as EntityBase).DisplayName);
+        }
+
+        private IList<KeyValuePair<string, string>> shallowProperties = new List<KeyValuePair<string, string>>();
+
+        /// <summary>
+        /// Convert the entity to a JSON string containing a brief list of property values.
+        /// NOTE: It should NOT convert properties with EntityBase type or other Object types. Only convert primitive properties.
+        /// For example, do not convert InvoiceItems in Invoice, Insurer in Patient and so on.
+        /// </summary>
+        /// <returns></returns>
+        public virtual string ToShallowJSON() {
+
+            List<KeyValuePair<string, string>> pairs = new List<KeyValuePair<string, string>>();
+            PropertyDescriptorCollection props = TypeDescriptor.GetProperties(this);
+
+            foreach (PropertyDescriptor p in props) {
+                string propName = p.Name;
+                string propTypeName = p.PropertyType.Name;
+                bool isIEnumerable = (p.PropertyType.GetInterface("IEnumerable") != null && propTypeName != "String");
+                bool isEntityBase = p.PropertyType.IsSubclassOf(typeof(EntityBase));
+
+                if (isIEnumerable) {
+                    //Ignore IEnumerable properties, such as IList<Invoice>...
+                } else if (isEntityBase) {
+                    //Only track entity id
+                    EntityBase propValue = p.GetValue(this) as EntityBase;
+                    if (propValue != null) {
+                        pairs.Add(new KeyValuePair<string, string>(string.Format("{0} Id", propTypeName), propValue.Id.ToString()));
+                    }
+                } else {
+                    //Add other properties
+                    object propValue = p.GetValue(this);
+                    pairs.Add(new KeyValuePair<string, string>(propName, propValue == null ? string.Empty : propValue.ToString()));
+                }
+            }
+
+            return JSONHelper.KeyValuePairsToJSON(pairs);
+        }
+    }
+}

@@ -1,0 +1,65 @@
+
+============================================================================
+How to install J.C Nature Source Health Centre system
+============================================================================
+
+1. Install the J.C Desktop application for a client computer, which will connect to the MySQL database remotely.
+----------------------------------------------------------------------------------------------------------------------
+
+	* Download and install Microsoft .Net Framework 4.0 full package. (.Net Framework 1.1/2.0 might be needed)
+
+	* Download and install Microsoft Visual C++ 2010 32-bit runtime.
+	
+	a) Run setup.exe to install the software to the default location, such as c:\JC\J.C. Nature Source Health Centre\.
+	
+	b) Grant full control permission for all users to the application folder above, such as c:\JC.
+	
+	c) Run the application and the login screen will show up.
+	
+	d) Press [Ctrl] + [Shift] + [F12] to bring up the config window.
+	
+	e) Enter the correct connection string and save.
+	
+	f) Try to login to verify the installation.
+	
+2. For the database server.
+----------------------------------------------------------------------------------------------------------------------
+
+	* Download and install MySQL. (Full installation)
+		NOTE: Let the user pick the root password
+	
+	a) Import JCManagement database
+		c:\> mysql -uroot -p<password> < db_dump_JCManagement.sql
+	
+	b) Enable remote MySQL connection
+		$ mysql -u root -p
+		Enter password:
+		
+		mysql> use mysql
+		mysql> GRANT ALL ON *.* to root@'IP-of-the-remote-computer' IDENTIFIED BY 'your-root-password'; 
+		
+					or GRANT ALL ON *.* to root IDENTIFIED BY 'your-root-password'; 
+					to grant to all computers
+					
+		mysql> FLUSH PRIVILEGES;
+	
+	c) Install the J.C Desktop application by following the above step 1.
+	
+	d) Run and config the J.C Desktop application and setup the Users/Diagrams/Therapy Types
+	
+		1) Diagrams: ENTER THE EXACT NAMES BELOW
+			
+			Physiotherapy
+			PhysiotherapySpine
+			Chiropractic
+			Chiropractic SOAP
+			Massage
+		
+		2) Therapy Types: ENTER THE EXACT NAMES BELOW
+			
+			Physiotherapy
+			Chiropractic
+			Acupuncture
+			Massage
+	
+	e) Done.

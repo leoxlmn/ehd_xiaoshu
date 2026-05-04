@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D1BF5E3E-A19A-4ECB-8D47-9AC349821C6E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EHD.Admin</RootNamespace>
+    <AssemblyName>Easy Healthcare Desktop for xiaoshu</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>\\ds923\web\xiaoshu\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>https://leoxie.com/xiaoshu/</InstallUrl>
+    <ProductName>Easy Healthcare Desktop for xiaoshu</ProductName>
+    <PublisherName>Leo X</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>150</ApplicationRevision>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>2</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>0754BDAE7450EC9D424722BCFC06A23A3FACABE7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>EHD.Admin_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images\app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.31.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessController.cs" />
+    <Compile Include="AddDepositForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDepositForm.Designer.cs">
+      <DependentUpon>AddDepositForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedSearchForm.Designer.cs">
+      <DependentUpon>AdvancedSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AvailabilityCalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AvailabilityCalendarForm.Designer.cs">
+      <DependentUpon>AvailabilityCalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookingForm.Designer.cs">
+      <DependentUpon>BookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarScheduleDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalendarScheduleDialog.Designer.cs">
+      <DependentUpon>CalendarScheduleDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditBookingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBookingForm.Designer.cs">
+      <DependentUpon>EditBookingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDocumentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDocumentForm.Designer.cs">
+      <DependentUpon>EditDocumentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDocumentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDocumentsForm.Designer.cs">
+      <DependentUpon>EditDocumentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDocumentTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDocumentTypeForm.Designer.cs">
+      <DependentUpon>EditDocumentTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTaxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTaxForm.Designer.cs">
+      <DependentUpon>EditTaxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageDocumentTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageDocumentTypeForm.Designer.cs">
+      <DependentUpon>ManageDocumentTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageTaxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageTaxForm.Designer.cs">
+      <DependentUpon>ManageTaxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageTemplateForm.Designer.cs">
+      <DependentUpon>ManageTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="PleaseWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PleaseWaitForm.Designer.cs">
+      <DependentUpon>PleaseWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintRangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintRangeForm.Designer.cs">
+      <DependentUpon>PrintRangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForm.Designer.cs">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchDocumentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchDocumentsForm.Designer.cs">
+      <DependentUpon>SearchDocumentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTaxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectTaxForm.Designer.cs">
+      <DependentUpon>SelectTaxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAutoCompletedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAutoCompletedTextBox.Designer.cs">
+      <DependentUpon>UCAutoCompletedTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCOsteopathySOAP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCOsteopathySOAP.Designer.cs">
+      <DependentUpon>UCOsteopathySOAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCOsteopathyDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCOsteopathyDetail.Designer.cs">
+      <DependentUpon>UCOsteopathyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBUpdater.cs" />
+    <Compile Include="DoctorCalendarHelper.cs" />
+    <Compile Include="EditAccountBalanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAccountBalanceForm.Designer.cs">
+      <DependentUpon>EditAccountBalanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDiagramForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDiagramForm.Designer.cs">
+      <DependentUpon>EditDiagramForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditInsurerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInsurerForm.Designer.cs">
+      <DependentUpon>EditInsurerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditInvoiceNoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInvoiceNoteForm.Designer.cs">
+      <DependentUpon>EditInvoiceNoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditOrganizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditOrganizationForm.Designer.cs">
+      <DependentUpon>EditOrganizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSystemSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSystemSettingForm.Designer.cs">
+      <DependentUpon>EditSystemSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTherapyTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTherapyTypeForm.Designer.cs">
+      <DependentUpon>EditTherapyTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUserForm.Designer.cs">
+      <DependentUpon>EditUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditUserTitleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUserTitleForm.Designer.cs">
+      <DependentUpon>EditUserTitleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoryForm.Designer.cs">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUserTitleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageUserTitleForm.Designer.cs">
+      <DependentUpon>ManageUserTitleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageSystemSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageSystemSettingForm.Designer.cs">
+      <DependentUpon>ManageSystemSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageInvoiceNoteReferenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageInvoiceNoteReferenceForm.Designer.cs">
+      <DependentUpon>ManageInvoiceNoteReferenceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditInvoiceItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInvoiceItemForm.Designer.cs">
+      <DependentUpon>EditInvoiceItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInvoiceForm.Designer.cs">
+      <DependentUpon>EditInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvoiceSearchForm.Designer.cs">
+      <DependentUpon>InvoiceSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditTherapistRegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTherapistRegistrationForm.Designer.cs">
+      <DependentUpon>EditTherapistRegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageOrganizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageOrganizationForm.Designer.cs">
+      <DependentUpon>ManageOrganizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditFollowUpTreatmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditFollowUpTreatmentForm.Designer.cs">
+      <DependentUpon>EditFollowUpTreatmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditInitialTreatmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInitialTreatmentForm.Designer.cs">
+      <DependentUpon>EditInitialTreatmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditPatientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPatientForm.Designer.cs">
+      <DependentUpon>EditPatientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IFollowUpDetailUserControl.cs" />
+    <Compile Include="ITreatmentDetailUserControl.cs" />
+    <Compile Include="ManageDiagramForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageDiagramForm.Designer.cs">
+      <DependentUpon>ManageDiagramForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JCConfig.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageInsurerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageInsurerForm.Designer.cs">
+      <DependentUpon>ManageInsurerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageTherapistRegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageTherapistRegistrationForm.Designer.cs">
+      <DependentUpon>ManageTherapistRegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageTherapyTypesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageTherapyTypesForm.Designer.cs">
+      <DependentUpon>ManageTherapyTypesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageUserForm.Designer.cs">
+      <DependentUpon>ManageUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageBoxEx.Designer.cs">
+      <DependentUpon>MessageBoxEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageInputForm.Designer.cs">
+      <DependentUpon>MessageInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyAssignmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyAssignmentForm.Designer.cs">
+      <DependentUpon>MyAssignmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PendingTreatmentAlertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PendingTreatmentAlertForm.Designer.cs">
+      <DependentUpon>PendingTreatmentAlertForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm.Designer.cs">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintTreatmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintTreatmentForm.Designer.cs">
+      <DependentUpon>PrintTreatmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectInitialTreatmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectInitialTreatmentForm.Designer.cs">
+      <DependentUpon>SelectInitialTreatmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectInvoiceNoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectInvoiceNoteForm.Designer.cs">
+      <DependentUpon>SelectInvoiceNoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetGroupForm.Designer.cs">
+      <DependentUpon>SetGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleListItem.cs" />
+    <Compile Include="SimpleUserItem.cs" />
+    <Compile Include="TableLayoutPanelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TemplateListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateListForm.Designer.cs">
+      <DependentUpon>TemplateListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAcupunctureDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAcupunctureDetail.Designer.cs">
+      <DependentUpon>UCAcupunctureDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAcupunctureSOAP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAcupunctureSOAP.Designer.cs">
+      <DependentUpon>UCAcupunctureSOAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAddTimeBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAddTimeBlock.Designer.cs">
+      <DependentUpon>UCAddTimeBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCCheckBoxDropDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCCheckBoxDropDown.Designer.cs">
+      <DependentUpon>UCCheckBoxDropDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCChiropracticDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCChiropracticDetail.Designer.cs">
+      <DependentUpon>UCChiropracticDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCChiropracticSOAP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCChiropracticSOAP.Designer.cs">
+      <DependentUpon>UCChiropracticSOAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCMassageDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCMassageDetail.Designer.cs">
+      <DependentUpon>UCMassageDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCMassageSOAP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCMassageSOAP.Designer.cs">
+      <DependentUpon>UCMassageSOAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCNaturopathicDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCNaturopathicDetail.Designer.cs">
+      <DependentUpon>UCNaturopathicDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCPager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCPager.Designer.cs">
+      <DependentUpon>UCPager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCPhysiotherapyDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCPhysiotherapyDetail.Designer.cs">
+      <DependentUpon>UCPhysiotherapyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTimeBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTimeBox.Designer.cs">
+      <DependentUpon>UCTimeBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCTreatmentDetailBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCTreatmentDetailFactory.cs" />
+    <Compile Include="ViewModel\InvoiceItemViewModel.cs" />
+    <Compile Include="WordExportHelper.cs" />
+    <EmbeddedResource Include="AddDepositForm.resx">
+      <DependentUpon>AddDepositForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedSearchForm.resx">
+      <DependentUpon>AdvancedSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvailabilityCalendarForm.resx">
+      <DependentUpon>AvailabilityCalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookingForm.resx">
+      <DependentUpon>BookingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarScheduleDialog.resx">
+      <DependentUpon>CalendarScheduleDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditBookingForm.resx">
+      <DependentUpon>EditBookingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDocumentForm.resx">
+      <DependentUpon>EditDocumentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDocumentsForm.resx">
+      <DependentUpon>EditDocumentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDocumentTypeForm.resx">
+      <DependentUpon>EditDocumentTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTaxForm.resx">
+      <DependentUpon>EditTaxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageDocumentTypeForm.resx">
+      <DependentUpon>ManageDocumentTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageTaxForm.resx">
+      <DependentUpon>ManageTaxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageTemplateForm.resx">
+      <DependentUpon>ManageTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PleaseWaitForm.resx">
+      <DependentUpon>PleaseWaitForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintRangeForm.resx">
+      <DependentUpon>PrintRangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForm.resx">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchDocumentsForm.resx">
+      <DependentUpon>SearchDocumentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectTaxForm.resx">
+      <DependentUpon>SelectTaxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCOsteopathySOAP.resx">
+      <DependentUpon>UCOsteopathySOAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCOsteopathyDetail.resx">
+      <DependentUpon>UCOsteopathyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAccountBalanceForm.resx">
+      <DependentUpon>EditAccountBalanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDiagramForm.resx">
+      <DependentUpon>EditDiagramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInsurerForm.resx">
+      <DependentUpon>EditInsurerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInvoiceNoteForm.resx">
+      <DependentUpon>EditInvoiceNoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditOrganizationForm.resx">
+      <DependentUpon>EditOrganizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSystemSettingForm.resx">
+      <DependentUpon>EditSystemSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTherapyTypeForm.resx">
+      <DependentUpon>EditTherapyTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUserForm.resx">
+      <DependentUpon>EditUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUserTitleForm.resx">
+      <DependentUpon>EditUserTitleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryForm.resx">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUserTitleForm.resx">
+      <DependentUpon>ManageUserTitleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageSystemSettingForm.resx">
+      <DependentUpon>ManageSystemSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageInvoiceNoteReferenceForm.resx">
+      <DependentUpon>ManageInvoiceNoteReferenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInvoiceItemForm.resx">
+      <DependentUpon>EditInvoiceItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInvoiceForm.resx">
+      <DependentUpon>EditInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceSearchForm.resx">
+      <DependentUpon>InvoiceSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTherapistRegistrationForm.resx">
+      <DependentUpon>EditTherapistRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageOrganizationForm.resx">
+      <DependentUpon>ManageOrganizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditFollowUpTreatmentForm.resx">
+      <DependentUpon>EditFollowUpTreatmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInitialTreatmentForm.resx">
+      <DependentUpon>EditInitialTreatmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPatientForm.resx">
+      <DependentUpon>EditPatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageDiagramForm.resx">
+      <DependentUpon>ManageDiagramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageInsurerForm.resx">
+      <DependentUpon>ManageInsurerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageTherapistRegistrationForm.resx">
+      <DependentUpon>ManageTherapistRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageTherapyTypesForm.resx">
+      <DependentUpon>ManageTherapyTypesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageUserForm.resx">
+      <DependentUpon>ManageUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageBoxEx.resx">
+      <DependentUpon>MessageBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageInputForm.resx">
+      <DependentUpon>MessageInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyAssignmentForm.resx">
+      <DependentUpon>MyAssignmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PendingTreatmentAlertForm.resx">
+      <DependentUpon>PendingTreatmentAlertForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm.resx">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintTreatmentForm.resx">
+      <DependentUpon>PrintTreatmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SelectInitialTreatmentForm.resx">
+      <DependentUpon>SelectInitialTreatmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectInvoiceNoteForm.resx">
+      <DependentUpon>SelectInvoiceNoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetGroupForm.resx">
+      <DependentUpon>SetGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateListForm.resx">
+      <DependentUpon>TemplateListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAcupunctureDetail.resx">
+      <DependentUpon>UCAcupunctureDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAcupunctureSOAP.resx">
+      <DependentUpon>UCAcupunctureSOAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAddTimeBlock.resx">
+      <DependentUpon>UCAddTimeBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCCheckBoxDropDown.resx">
+      <DependentUpon>UCCheckBoxDropDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCChiropracticDetail.resx">
+      <DependentUpon>UCChiropracticDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCChiropracticSOAP.resx">
+      <DependentUpon>UCChiropracticSOAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCMassageDetail.resx">
+      <DependentUpon>UCMassageDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCMassageSOAP.resx">
+      <DependentUpon>UCMassageSOAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCNaturopathicDetail.resx">
+      <DependentUpon>UCNaturopathicDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCPager.resx">
+      <DependentUpon>UCPager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCPhysiotherapyDetail.resx">
+      <DependentUpon>UCPhysiotherapyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTimeBox.resx">
+      <DependentUpon>UCTimeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCTreatmentDetailBase.resx">
+      <DependentUpon>UCTreatmentDetailBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EHD.Admin_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="images\NeedleLegend.png" />
+    <EmbeddedResource Include="images\NumbnessLegend.png" />
+    <EmbeddedResource Include="images\PainLegend.png" />
+    <EmbeddedResource Include="images\CheckMarkRed.png" />
+    <EmbeddedResource Include="images\DotRed.png" />
+    <EmbeddedResource Include="images\XBlack.png" />
+    <EmbeddedResource Include="images\CheckBoxEmpty.png" />
+    <Content Include="clipboard.ico" />
+    <Content Include="images\booking.ico" />
+    <Content Include="images\booking.png" />
+    <Content Include="images\Chiropractic.png" />
+    <Content Include="images\app.ico" />
+    <Content Include="images\doctor.ico" />
+    <Content Include="images\doctor.png" />
+    <Content Include="images\logo demo.png" />
+    <EmbeddedResource Include="images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="images\LogoffGoogle.png" />
+    <Content Include="images\naturopoint_logo.png" />
+    <Content Include="template\PhysiotherapyTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\ChiropracticSOAPTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\ChiropracticTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\GeneralSOAPTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\MassageSOAPTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\MassageTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\NaturopathicTemplate_Old.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\InvoiceTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\InvoiceWithServiceDurationTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\AcupunctureTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\OsteopathyTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\OsteopathySOAPTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="template\NaturopathicTemplate.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FilePathExtender\FilePathExtender.csproj">
+      <Project>{CE63E401-6296-4708-8B37-A564268C75FB}</Project>
+      <Name>FilePathExtender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HolidayCalculator\HolidayCalculator.csproj">
+      <Project>{f73abf6c-99b4-40ff-8868-c448d3b7ff33}</Project>
+      <Name>HolidayCalculator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Constant\EHD.Constant.csproj">
+      <Project>{895D2D70-F1BB-45DA-B3DD-1BCF95C0DB1A}</Project>
+      <Name>EHD.Constant</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.FormUtitlity\EHD.FormUtitlity.csproj">
+      <Project>{114EC874-3892-4A0C-8DF0-9C488C37E9CE}</Project>
+      <Name>EHD.FormUtitlity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Login\EHD.Login.csproj">
+      <Project>{630B6A14-1FD3-4EC8-ACEB-60A0E41827BD}</Project>
+      <Name>EHD.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Model\EHD.Model.csproj">
+      <Project>{D6E36308-DFE2-4D98-BEA9-31E67B922068}</Project>
+      <Name>EHD.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Repository\EHD.Repository.csproj">
+      <Project>{647A694D-6584-46D2-AB1C-7E83E2A90CA4}</Project>
+      <Name>EHD.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EHD.Service\EHD.Service.csproj">
+      <Project>{99C4D824-7519-4048-B70C-0998845A816A}</Project>
+      <Name>EHD.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{7A736B52-B44A-467B-BAF2-FAD4C86C9ABF}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WordFileProcessor\WordFileProcessor.csproj">
+      <Project>{07CE964C-D656-4A6F-9CBB-E11DE000B2EB}</Project>
+      <Name>WordFileProcessor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="images\Check.png" />
+    <None Include="Resources\PinPoint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="DocumentFormat.OpenXml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

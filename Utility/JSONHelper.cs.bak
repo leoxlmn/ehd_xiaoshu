@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.ComponentModel;
+using System.Collections;
+
+namespace Utility {
+    public static class JSONHelper {
+        public static T GetObject<T>(string json) {
+            try {
+                System.Web.Script.Serialization.JavaScriptSerializer serializer =
+                    new System.Web.Script.Serialization.JavaScriptSerializer();
+
+                T ret = serializer.Deserialize<T>(json);
+                ret = (T) fixLocalTime(ret);
+                return ret;
+            } catch {
+                return default(T);
+            }
+        }
+
+        public static string GetJSON(object Obj) {
+            try {
+                System.Web.Script.Serialization.JavaScriptSerializer serializer =
+                    new System.Web.Script.Serialization.JavaScriptSerializer();
+                return serializer.Serialize(Obj);
+            } catch {
+                return string.Empty;
+            }
+        }
+
+        private static object fixLocalTime(object obj) {
+            if (obj != null) {
+                if (obj is DateTime) {
+                    obj = ((DateTime)obj).ToLocalTime();
+                } else if (obj is DateTime[]) {
+                    DateTime[] arrIn = (DateTime[])obj;
+                    DateTime[] arrOut = new DateTime[arrIn.Length];
+                    for (int i = 0; i < arrIn.Length; i++) {
+                        arrOut[i] = arrIn[i].ToLocalTime();
+                    }
+                    obj = arrOut;
+                } else if (obj is Array) {
+                    object[] arrIn = (object[])obj;
+                    object[] arrOut = new object[arrIn.Length];
+                    for (int i = 0; i < arrIn.Length; i++) {
+                        arrOut[i] = fixLocalTime(arrIn[i]);
+                    }
+                    obj = arrOut;
+                } else {
+                    PropertyDescriptorCollection props = TypeDescriptor.GetProperties(obj);
+                    foreach (PropertyDescriptor p in props) {
+                        object pVal = p.GetValue(obj);
+                        p.SetValue(obj, fixLocalTime(pVal));
+                    }
+                }
+            }
+            return obj;
+        }
+
+        public static string EnumerableToString(IEnumerable obj) {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+            foreach (object o in obj) {
+                sb.Append(o is IEnumerable && !(o is string) ? EnumerableToString((IEnumerable)o) : o.ToString());
+                sb.Append(",");
+            }
+            if (sb.Length > 1) sb.Remove(sb.Length - 1, 1);
+            sb.Append("]");
+            return sb.ToString();
+        }
+
+    }
+}

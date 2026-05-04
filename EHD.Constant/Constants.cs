@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace EHD.Constant {
+    public static class Constants {
+        public const string DATE_TIME_FORMAT = @"MMM dd, yyyy hh:mm tt";
+        public const string DATE_FORMAT = @"MMM dd, yyyy";
+        public const string DATE_TIME_WITH_SECOND_FORMAT = @"MMM dd, yyyy hh:mm:ss tt";
+        public const string DATE_WITH_WEEK_FORMAT = @"dddd, MMM dd, yyyy";
+        public const string DATE_SHORT_FORMAT = @"MMM dd";
+        public const string TIME_FORMAT = @"hh:mm tt";
+
+        public const string SETTING_USERS = "Users";
+        public const string SETTING_DIAGRAMS = "Diagrams";
+        public const string SETTING_THERAPY_TYPES = "Therapy types";
+
+        public const string DATA_LIST_SETTINGS = "Setting Data List";
+        public const string DATA_LIST_DIAGRAMS = "List of diagrams";
+        public const string DATA_LIST_THERAPY_TYPES = "List of therapy types";
+        public const string DATA_LIST_USERS = "List of users";
+
+        public const string SETTINGS_COLUMN_SETTING = "Setting";
+
+        public const string MSG_MANDATORY_FIELD_MISSING = "Please fill in the mandatory fields.";
+
+        public const string IMAGE_BUTTON_ADD_PATIENT = "AddPatient";
+        public const string IMAGE_BUTTON_EDIT_PATIENT = "PatientEdit";
+        public const string IMAGE_BUTTON_DELETE_PATIENT = "PatientDelete";
+        public const string IMAGE_BUTTON_VIEW_PATIENT = "ViewPatientDetail";
+        public const string IMAGE_BUTTON_PRINT_PATIENT = "PrintPatient";
+        public const string IMAGE_BUTTON_ACCOUNT_BALANCE = "AccountBalance";
+        public const string IMAGE_BUTTON_DOCUMENT = "Document";
+
+        public const string IMAGE_BUTTON_ADD_INIT_TREATMENT = "AddInitTreatment";
+        public const string IMAGE_BUTTON_EDIT_INIT_TREATMENT = "EditInitialTreatment";
+        public const string IMAGE_BUTTON_DELETE_INIT_TREATMENT = "DeleteInitialTreatment";
+        public const string IMAGE_BUTTON_VIEW_INIT_TREATMENT = "ViewInitialTreatmentDetail";
+        public const string IMAGE_BUTTON_PRINT_INIT_TREATMENT = "PrintInitialTreatment";
+        public const string IMAGE_ICON_INIT_TREATMENT_COMPLETE = "InitialTreatmentComplete";
+
+        public const string IMAGE_BUTTON_ADD_FOLLOWUP_TREATMENT = "AddFollowUpTreatment";
+        public const string IMAGE_BUTTON_EDIT_FOLLOWUP_TREATMENT = "EditFollowUpTreatment";
+        public const string IMAGE_BUTTON_DELETE_FOLLOWUP_TREATMENT = "DeleteFollowUpTreatment";
+        public const string IMAGE_BUTTON_VIEW_FOLLOWUP_TREATMENT = "ViewFollowUpTreatmentDetail";
+        public const string IMAGE_BUTTON_PRINT_FOLLOWUP_TREATMENT = "PrintFollowUpTreatment";
+        public const string IMAGE_ICON_FOLLOWUP_TREATMENT_COMPLETE = "FollowUpTreatmentComplete";
+
+        public const string IMAGE_BUTTON_PATIENT_BUTTON = "PatientButton";
+        public const string IMAGE_BUTTON_FOLLOWUP_PATIENT_BUTTON = "FollowUpPatientButton";
+        public const string IMAGE_BUTTON_INITIAL_TREATMENT_BUTTON = "InitialTreatmentButton";
+        public const string IMAGE_BUTTON_EDIT_INITIAL_TREATMENT = "EditInitialTreatmentButton";
+        public const string IMAGE_BUTTON_EDIT_FOLLOWUP_TREATMENT_BUTTON = "EditFollowUpTreatmentButton";
+
+        public const string DEFINED_TREATMENT_TYPE_PHYSIOTHERAPY = "Physiotherapy"; //This has to be exactly the same as the THP_TherapyType field in DB
+        public const string DEFINED_TREATMENT_TYPE_CHIROPRACTIC = "Chiropractic"; //This has to be exactly the same as the THP_TherapyType field in DB
+        public const string DEFINED_TREATMENT_TYPE_ACUPUNCTURE = "Acupuncture"; //This has to be exactly the same as the THP_TherapyType field in DB
+        public const string DEFINED_TREATMENT_TYPE_MASSAGE = "Massage";
+        public const string DEFINED_TREATMENT_TYPE_NATUROPATHIC = "Naturopathic";
+        public const string DEFINED_TREATMENT_TYPE_OSTEOPATH = "Osteopath"; //This type WAS the same treatment detail info as Chiropractic, but NOW HAS its own detail similar to Massage
+
+        public const string DEFINED_DIAGRAM_NAME_PAIN_SCALE = "Physiotherapy";
+        public const string DEFINED_DIAGRAM_NAME_SPINE = "PhysiotherapySpine";
+        public const string DEFINED_DIAGRAM_NAME_CHIROPRACTIC = "Chiropractic";
+        public const string DEFINED_DIAGRAM_NAME_CHIROPRACTIC_SOAP = "Chiropractic SOAP";
+        public const string DEFINED_DIAGRAM_NAME_MASSAGE = "Massage";
+        public const string DEFINED_DIAGRAM_NAME_OSTEOPATHY = "Massage"; //Osteopathy share the same diagram as Massge
+        public const string DEFINED_DIAGRAM_NAME_ACUPUNCTURE = "Acupuncture";
+
+        public const string CFG_TEMPLATE_FOLDER = "template";
+        //public const string CFG_PRINTOUT_FOLDER = "printout";
+        public const string CFG_IMAGE_FOLDER = "images";
+        public const string CFG_TEMPLATE_FILE_PHYSIOTHERAPY = "PhysiotherapyTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_ACUPUNCTURE = "AcupunctureTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_ACUPUNCTURE_SOAP = "AcupunctureTemplate.docx";//Save as Acupuncture Initial Template
+        public const string CFG_TEMPLATE_FILE_CHIROPRACTIC = "ChiropracticTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_CHIROPRACTIC_SOAP = "ChiropracticSOAPTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_GENERAL_SOAP = "GeneralSOAPTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_MASSAGE = "MassageTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_MASSAGE_SOAP = "MassageSOAPTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_NATUROPATHIC = "NaturopathicTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_OSTEOPATHY = "OsteopathyTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_OSTEOPATHY_SOAP = "OsteopathySOAPTemplate.docx";
+
+        public const string CFG_TEMPLATE_FILE_INVOICE = "InvoiceTemplate.docx";
+        public const string CFG_TEMPLATE_FILE_INVOICE_WITH_SERVICE_DURATION = "InvoiceWithServiceDurationTemplate.docx";
+
+        public const string SETTING_NAME_INVOICE_TITLE = "Invoice Title";
+        public const string SETTING_NAME_HST_NUMBER = "HST Number";
+        public const string SETTING_NAME_INVOICE_NUMBER_TEMPLATE = "Invoice Number Template";
+        public const string SETTING_NAME_INVOICE_NUMBER_PREFIX = "Invoice Number Prefix";
+
+        public const string CACHE_KEY_INVOICE_ALERT_SEARCH_FROM = "Invoice Alert Search From Date";
+
+        public const string WARNING_HOLIDAY = "The date you entered [{0:MMM dd, yyyy}] is a Canadian Statutory Holiday!\nDo you want to continue to save this date?\n\nPress [Yes] to continue\nPress[No] to cancel";
+        public const string WARNING_FUTURE_DATE = "The date you entered [{0:MMM dd, yyyy}] is a future date!\nDo you want to continue to save this date?\n\nPress [Yes] to continue\nPress[No] to cancel";
+        public const string WARNING_NOT_WORKING_TIME = "The practitioner has been marked not working during the date/time you have entered. This is a warning.\n\nPress [OK] to continue.\nPress [Cancel] to cancel.";
+        public const string WARNING_TIME_OFF = "The practitioner has taken a time off the date/time you have entered. This is a warning.\n\nPress [OK] to continue.\nPress [Cancel] to cancel.";
+        public const string WARNING_NOT_AVAILABLE_TREATMENT = "The practitioner has other treatment(s) during the time range you have entered. This is a warning.\n\nPress [OK] to continue.\nPress [Cancel] to cancel.";
+        public const string WARNING_NOT_AVAILABLE_BOOKING = "The practitioner has other booking(s) during the time range you have entered. This is a warning.\n\nPress [OK] to continue.\nPress [Cancel] to cancel.";
+        public const string ERROR_NOT_AVAILABLE_BOOKING = "The practitioner has other booking(s) during the time range you have entered.";
+
+        public const string WARNING_GOOGLE_CALENDAR_ID_MISSING = "You have enabled Google Calendar function.\nBut you haven't entered the Google Calendar Id for this doctor.\n\nDo you want to continue without checking/updating the doctor's calendar?\n\nPress [Yes] to continue.\nPress [No] to cancel.";
+
+        public const string TEMP_FOLDER_NAME = "Easy Healthcare Desktop";
+        //public const int MIN_TIME_INTERVAL = 5;//Minimum time interval in minutes (for booking only) 5, 10, 15, 20, 30, 60
+    }
+}

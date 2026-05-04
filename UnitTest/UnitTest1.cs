@@ -1,0 +1,124 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EHD.Model.Entity;
+using EHD.Repository;
+using EHD.Service;
+using EHD.Constant;
+using NHibernate;
+using NHibernate.Criterion;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
+using EHD.Model.Mapping;
+
+namespace UnitTest
+{
+    [TestClass]
+    public class UnitTest1
+    {
+        [TestMethod]
+        public void TestGetNumberOfTreatmentFor()
+        {
+            ISessionFactory sessionFactory = null;
+            try
+            {
+                sessionFactory = Fluently.Configure().Database(MySQLConfiguration.Standard
+                    .ShowSql() //Enable this line to output SQL in Output window
+                                    .ConnectionString("Server=localhost;Port=3306;Database=EasyHealthcare;Uid=root;Pwd=Pa33w0rd;"))
+                                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserMap>()
+                                        .Conventions.Add(new EnumMappingConvention())//This EnumMappingConvention is important!
+                                        )
+                                    .BuildSessionFactory();
+                using (ISession session = sessionFactory.OpenSession())
+                using (ITransaction tr = session.BeginTransaction())
+                {
+                    JCService service = new JCService(session, new User());
+
+                    //Dr. Wong
+                    User therapist = session.CreateCriteria<User>()
+                        .Add(Restrictions.Eq("Id", 2260))
+                        .UniqueResult<User>();
+
+                    //Patient X001
+                    Patient patient = session.CreateCriteria<Patient>()
+                        .Add(Restrictions.Eq("Id", 2262))
+                        .UniqueResult<Patient>();
+
+                    //Insurer
+                    Insurer insurer = patient.Insurer;
+
+                    //Date
+                    DateTime dt = DateTime.Now.Date;
+
+                    //Initial Treatment Id
+                    int initId = 0;
+
+                    //Followup Treatment Id
+                    int folId = 0;
+
+                    double numTreatment = service.GetNumberOfTreatmentFor(therapist.Id,
+                        insurer == null ? 0 : insurer.Id,
+                        dt,
+                        initId,
+                        folId);
+
+                    Console.WriteLine("Number of treatments is: " + numTreatment.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetNumberOfTreatmentForTreatmentType() {
+            
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize(); 
+            
+            ISessionFactory sessionFactory = null;
+            try {
+                sessionFactory = Fluently.Configure().Database(MySQLConfiguration.Standard
+                    .ShowSql() //Enable this line to output SQL in Output window
+                                    .ConnectionString("Server=localhost;Port=3306;Database=EasyHealthcare_Carol;Uid=root;Pwd=Pa33w0rd;"))
+                                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserMap>()
+                                        .Conventions.Add(new EnumMappingConvention())//This EnumMappingConvention is important!
+                                        )
+                                    .BuildSessionFactory();
+                using (ISession session = sessionFactory.OpenSession())
+                using (ITransaction tr = session.BeginTransaction()) {
+                    JCService service = new JCService(session, new User());
+
+                    //Massage
+                    TherapyType therapyType = session.Get<TherapyType>(1568);
+
+                    //Dr. Wong
+                    User therapist = session.Get<User>(2260);
+
+                    //Patient X001
+                    Patient patient = session.Get<Patient>(2262);
+
+                    //Insurer
+                    Insurer insurer = patient.Insurer;
+
+                    //Date
+                    DateTime dt = DateTime.Now.Date;
+
+                    //Initial Treatment Id
+                    int initId = 0;
+
+                    //Followup Treatment Id
+                    int folId = 0;
+
+                    double numTreatment = service.GetNumberOfTreatmentFor(therapyType, therapist,
+                        dt,
+                        initId,
+                        folId);
+
+                    Console.WriteLine("Number of treatments is: " + numTreatment.ToString());
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}
