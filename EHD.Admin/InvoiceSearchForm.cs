@@ -1789,7 +1789,16 @@ namespace EHD.Admin {
 
             try
             {
-                using (ITransaction tr = session.BeginTransaction())
+                // Use existing transaction if present, otherwise create a local one.
+                ITransaction tr = session.Transaction;
+                bool localTransaction = false;
+                if (tr == null || !tr.IsActive)
+                {
+                    tr = session.BeginTransaction();
+                    localTransaction = true;
+                }
+
+                try
                 {
                     Patient aPatient = null;
                     Invoice aInvoice = null;
@@ -1863,7 +1872,20 @@ namespace EHD.Admin {
                         .SingleOrDefault<double>()
                         .ToString("0.00");
 
-                    tr.Commit();
+                    // Commit only if we created the local transaction. Read-only operations don't need commit when using an ambient transaction.
+                    if (localTransaction)
+                    {
+                        tr.Commit();
+                    }
+                }
+                catch
+                {
+                    // Rollback only if we created the transaction here.
+                    if (localTransaction && tr != null && tr.IsActive)
+                    {
+                        tr.Rollback();
+                    }
+                    throw;
                 }
             }
             catch (Exception ex)
